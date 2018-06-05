@@ -1,0 +1,138 @@
+//descriptive colors
+$black: #000;
+$white: #fff;
+
+//functional color variables
+
+$primary-color: #ff4444;
+$primary-color-dark: #CC0000;
+$primary-color-light: #ef9a9a;
+
+$color-text-dark: $black;
+$color-text-white: $white;
+$color-text-light: #bdbdbd;
+
+$background-white: $white;
+$backgroud-lighten: #ffebee;
+
+$font-heavy: 700;
+$shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+
+// borders
+$border-small: 2px;
+$border-medium: 5px;
+$border-large: 10px;
+
+// media queries
+$break-medium: '(max-width: 991px)';
+$break-small: '(max-width: 768px)';
+
+//extends
+
+%centered {
+    margin: 0 auto;
+}
+
+%text-center {
+    text-align: center;
+}
+
+//classes
+
+.headline {
+    font-size: 5em;
+    @media #{$break-medium} {
+        font-size: 4em;
+    }
+    @media #{$break-small} {
+        font-size: 3em;
+    }
+}
+
+.headline-secondary {
+    font-size: 4em;
+    @media #{$break-medium} {
+        font-size: 3em;
+    }
+    @media #{$break-small} {
+        font-size: 2em;
+    }
+}
+
+.navbar {
+    box-shadow: $shadow;
+    .home-icon {
+    color: $primary-color;
+    }
+}
+
+.icon-row {
+    @extend %text-center;
+    .main-icon {
+        font-size: 100px; 
+        
+        color: $primary-color;  
+            @media #{$break-small} {
+                font-size: 70px;
+            }
+    }
+    .description {     
+        color: $color-text-light;
+    }
+}
+
+.submit-button {
+   background-color: $primary-color;
+   color: $color-text-white;
+   box-shadow: $shadow; 
+}
+
+.button-center {
+    padding: 50px;
+}
+
+.forma {
+    box-shadow: $shadow;
+    padding: 50px;
+    width: 30%;
+    @extend %centered;
+        @media #{$break-medium} {
+        width: 50%;
+    }
+        @media #{$break-small} {
+        width: 70%;
+    }
+}
+
+.carousel {
+    box-shadow: $shadow;
+    width: 70%;
+    @extend %centered;
+        @media #{$break-medium} {
+        width: 90%;    
+        }
+}
+// footer 
+
+footer {
+    background-color: $primary-color;
+    color: $color-text-white;   
+}
+
+.footer-text{
+    font-weight: $font-heavy;
+    font-size: 1.2em;
+  }
+
+// elements
+
+ul li {
+    list-style-type: none;
+}
+
+strong {
+    color: $primary-color;
+}
+
+//
+

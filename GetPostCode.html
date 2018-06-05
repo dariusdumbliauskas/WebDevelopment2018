@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="input-group mb-3">
+
+        <input class="form-control" id="miestas" placeholder="Miestas" name="miestas">
+        <input class="form-control" id="gatve" placeholder="Gatvė" name="gatve">
+        <input class="form-control" id="numeris" placeholder="Numeris" name="numeris">
+        <button class="btn btn-primary" onclick="getPostIndex()">Pašto indeksas</button>
+    </div>
+
+    <p class="output"></p>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        function getPostIndex() {
+            var miestas = $('#miestas').val();
+            var gatve = $('#gatve').val();
+            var numeris = $('#numeris').val();
+
+            $.get('https://postit.lt/data/', { 'address': gatve + ' ' + numeris + ', ' + miestas }, function (resp) {
+                console.log(resp);
+                $('.output').html('Pašto indeksas: ' + resp.data[0].post_code);
+            });
+
+
+            $.get('https://postit.lt/data',
+                { 'address': gatve + ' ' + numeris + ', ' + miestas }
+            ).done(function (resp) {
+                console.log(resp);
+                if (resp.data && resp.data.length > 0) {
+                    $('.output').html('Pašto indeksas: ' + resp.data[0].post_code);
+                } else {
+                    $('.output').html('Blogas adresas');
+                }
+            }).error(function () {
+                $('.output').html('Serverio klaida');
+            });
+
+        }
+
+
+    </script>
+</body>
+
+</html>
